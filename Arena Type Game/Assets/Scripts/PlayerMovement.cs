@@ -30,49 +30,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+
+
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
 
-        //animator start
-        if (Input.GetButton("Horizontal"))
-        {
-            animator.SetBool("Running", true);
-        }
-
-        else if (Input.GetButton("Vertical"))
-        {
-            animator.SetBool("Running", true);
-        }
-
-        else animator.SetBool("Running", false);
-
-
-        if(Input.GetButton("Fire1"))
-        {
-            animator.SetBool("Swinging", true);
-
-        }
-
-        else animator.SetBool("Swinging", false);
-
-        if (Input.GetButton("Fire1") && (Input.GetButton("Horizontal")))
-        {
-            animator.SetBool("Swinging", true);
-            animator.SetBool("Running", false);
-
-        }
-
-        else if (Input.GetButton("Fire1") && (Input.GetButton("Vertical")))
-        {
-            animator.SetBool("Swinging", true);
-            animator.SetBool("Running", false);
-
-        }
-
-        else animator.SetBool("Swinging", false);
-        //animator end
-
+  
 
         Vector3 move = transform.right * x + transform.forward * z;
 
