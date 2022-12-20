@@ -48,6 +48,8 @@ MonoBehaviour:
   Sword: {fileID: 425942684755984128}
   CanAttack: 1
   AttackCoolDown: 1
+  SwordAttackSound: {fileID: 0}
+  isAttacking: 0
 --- !u!1 &4908395292009216588
 GameObject:
   m_ObjectHideFlags: 0

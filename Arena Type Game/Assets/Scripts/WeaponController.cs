@@ -7,10 +7,12 @@ public class WeaponController : MonoBehaviour
     public GameObject Sword;
     public bool CanAttack = true;
     public float AttackCoolDown = 1.0f;
+    public AudioClip SwordAttackSound;
+    public bool isAttacking = false;
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             if (CanAttack)
             {
@@ -23,18 +25,30 @@ public class WeaponController : MonoBehaviour
 
     public void SwordAttack()
     {
+        isAttacking = true;
+
         CanAttack = false;
         Animator anim = Sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
+        AudioSource ac = GetComponent<AudioSource>();
+        ac.PlayOneShot(SwordAttackSound);
+
+
+
         StartCoroutine(ResetAttackCooldown());
     }
 
     IEnumerator ResetAttackCooldown()
     {
+        StartCoroutine(ResetAttackBool());
         yield return new WaitForSeconds(AttackCoolDown);
         CanAttack = true;
     }
 
-
+    IEnumerator ResetAttackBool()
+    {
+        yield return new WaitForSeconds(1.0f);
+        isAttacking = false;
+    }
 
 }

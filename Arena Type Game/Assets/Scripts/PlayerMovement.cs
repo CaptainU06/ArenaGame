@@ -30,8 +30,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+        if(Input.GetButton("Horizontal"))
+        {
+            animator.SetTrigger("Running");
+        }
 
-
+        else if (Input.GetButton("Vertical"))
+        {
+            animator.SetTrigger("Running");
+        }
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");

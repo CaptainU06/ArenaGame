@@ -7,8 +7,9 @@ public class Target : MonoBehaviour
     public Transform target;
     public float speed = 4f;
     Rigidbody rig;
+    public WeaponController wc;
 
-
+    //Move
     void Start()
     {
         rig = GetComponent<Rigidbody>();
@@ -22,14 +23,21 @@ public class Target : MonoBehaviour
 
     }
 
-    public void takeDamage(float amount)
+    //Attack
+
+    //Death
+    private void OnTriggerEnter(Collider other)
     {
-        health -= amount;
-        if (health <= 0)
+        if (other.tag == "Melee" && wc.isAttacking)
         {
-            Die();
+            health -= 10;
+            if (health <= 0)
+            {
+                Die();
+            }
         }
     }
+
 
     void Die()
     {
